@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ParqueoSeguro - Iniciar Sesión</title>
-  <!-- ENLACE AL CSS -->
+  <title>ParqueoSeguro - Inicio</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <section class="form">
   <div class="container">
     <div class="login-box">
       <form class="form" id="loginForm">
@@ -15,24 +15,29 @@
         <span class="header">Bienvenido a ParqueoSeguro</span>
         <input type="email" placeholder="Correo electrónico" class="input" id="email" />
         <input type="password" placeholder="Contraseña" class="input" id="password" />
-        <button type="submit" class="button sign-in">Ingresar al sistema</button>
-        <button class="button google-sign-in" type="button">
-          <svg class="icon" viewBox="-3 0 262 262" xmlns="http://www.w3.org/2000/svg">
-            <!-- Icono de Google (omitido para no repetir tanto código) -->
-          </svg>
-          <span class="span two">Ingresar con Google</span>
+        <button type="submit" class="button sign-in">Iniciar Sesión</button>
+        <button type="button" class="button google-sign-in" id="mostrarRegistro">
+          Registrarse
         </button>
         <p class="footer">
-          ¿No tienes una cuenta?
-          <a href="#" class="link">¡Regístrate aquí!</a><br />
           <a href="#" class="link">¿Olvidaste tu contraseña?</a>
         </p>
         <p id="mensaje" style="color: white;"></p>
       </form>
+
+      <!-- Formulario de registro oculto al inicio -->
+      <form class="form" id="registroForm" style="display: none;">
+        <div class="logo"></div>
+        <span class="header">Crear cuenta en ParqueoSeguro</span>
+        <input type="text" placeholder="Nombre completo" class="input" id="nombre" />
+        <input type="email" placeholder="Correo electrónico" class="input" id="correoRegistro" />
+        <input type="password" placeholder="Contraseña" class="input" id="clave" />
+        <button type="submit" class="button sign-in">Registrar</button>
+        <p id="mensajeRegistro" style="color: white;"></p>
+      </form>
     </div>
   </div>
-
-  <!-- ENLACE AL JS -->
+  </section>
   <script src="validación.js"></script>
 </body>
 </html>
