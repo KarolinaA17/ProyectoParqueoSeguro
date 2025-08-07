@@ -1,4 +1,6 @@
+
 // LOGIN
+
 document.getElementById('loginForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -6,46 +8,72 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
   const password = document.getElementById('password').value.trim();
   const mensaje = document.getElementById('mensaje');
 
-  if (email && password) {
-    mensaje.textContent = 'Inicio de sesión exitoso. Redirigiendo...';
-    mensaje.style.color = 'lightgreen';
-    setTimeout(() => {
-      window.location.href = "bienvenida.html";
-    }, 1500);
-  } else {
-    mensaje.textContent = 'Por favor completa todos los campos.';
-    mensaje.style.color = 'red';
+  if (!email || !password) {
+    mensaje.textContent = 'Ambos campos son requeridos.';
+    mensaje.style.color = 'orange';
+    return;
   }
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|net|org|co|edu)$/;
+  if (!emailRegex.test(email)) {
+    mensaje.textContent = 'Correo electrónico inválido.';
+    mensaje.style.color = 'orange';
+    return;
+  }
+
+  mensaje.textContent = 'Inicio de sesión exitoso. Redirigiendo...';
+  mensaje.style.color = 'lightgreen';
+  setTimeout(() => {
+    window.location.href = "../sections/bienvenida.html";
+  }, 1500);
 });
 
-// MOSTRAR REGISTRO
+// MOSTRAR FORMULARIO DE REGISTRO
+
 document.getElementById('mostrarRegistro').addEventListener('click', function() {
   document.getElementById('loginForm').style.display = 'none';
   document.getElementById('registroForm').style.display = 'flex';
 });
 
 // REGISTRO
+
 document.getElementById('registroForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
   const nombre = document.getElementById('nombre').value.trim();
   const correo = document.getElementById('correoRegistro').value.trim();
   const clave = document.getElementById('clave').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
   const mensajeRegistro = document.getElementById('mensajeRegistro');
 
-  if (nombre && correo && clave && telefono) {
-    mensajeRegistro.textContent = 'Registro exitoso. Redirigiendo...';
-    mensajeRegistro.style.color = 'lightgreen';
-    setTimeout(() => {
-      window.location.href = "bienvenida.html";
-    }, 1500);
-  } else {
-    mensajeRegistro.textContent = 'Completa todos los campos para registrarte.';
-    mensajeRegistro.style.color = 'red';
+  if (!nombre || !correo || !clave || !telefono) {
+    mensajeRegistro.textContent = 'Todos los campos son requeridos.';
+    mensajeRegistro.style.color = 'orange';
+    return;
   }
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|net|org|co|edu)$/;
+  if (!emailRegex.test(correo)) {
+    mensajeRegistro.textContent = 'Correo electrónico inválido.';
+    mensajeRegistro.style.color = 'orange';
+    return;
+  }
+
+  if (isNaN(telefono)) {
+    mensajeRegistro.textContent = 'El teléfono debe ser numérico.';
+    mensajeRegistro.style.color = 'orange';
+    return;
+  }
+
+  mensajeRegistro.textContent = 'Registro exitoso. Redirigiendo...';
+  mensajeRegistro.style.color = 'lightgreen';
+  setTimeout(() => {
+    window.location.href = "../sections/bienvenida.html";
+  }, 1500);
 });
 
-// FORMULARIO DE CONTACTO - Validación
+// FORMULARIO DE CONTACTO
+
 const contactoForm = document.getElementById('contact-form');
 const mensajeConfirmacion = document.getElementById('mensaje-confirmacion');
 
@@ -64,7 +92,7 @@ if (contactoForm) {
       return;
     }
 
-    const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|net|org|co|edu)$/;
     if (!emailRegex.test(email)) {
       mensajeConfirmacion.textContent = "Correo electrónico inválido.";
       mensajeConfirmacion.style.color = "orange";
