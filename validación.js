@@ -44,3 +44,41 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
     mensajeRegistro.style.color = 'red';
   }
 });
+
+// FORMULARIO DE CONTACTO - Validación
+const contactoForm = document.getElementById('contact-form');
+const mensajeConfirmacion = document.getElementById('mensaje-confirmacion');
+
+if (contactoForm) {
+  contactoForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    if (!nombre || !email || !telefono || !mensaje) {
+      mensajeConfirmacion.textContent = "Por favor completa todos los campos.";
+      mensajeConfirmacion.style.color = "orange";
+      return;
+    }
+
+    const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    if (!emailRegex.test(email)) {
+      mensajeConfirmacion.textContent = "Correo electrónico inválido.";
+      mensajeConfirmacion.style.color = "orange";
+      return;
+    }
+
+    if (isNaN(telefono)) {
+      mensajeConfirmacion.textContent = "El teléfono debe ser numérico.";
+      mensajeConfirmacion.style.color = "orange";
+      return;
+    }
+
+    mensajeConfirmacion.textContent = "Mensaje enviado con éxito.";
+    mensajeConfirmacion.style.color = "lightgreen";
+    contactoForm.reset();
+  });
+}
