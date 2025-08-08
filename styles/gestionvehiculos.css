@@ -115,3 +115,41 @@ nav a {
   font-weight: 600;
 }
 
+.vehiculo-card {
+  background-color: #1f1f1f;
+  color: white;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vehiculo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.vehiculo-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: #00e5ff;
+}
+
+.vehiculo-card p {
+  margin: 4px 0;
+}
+
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}

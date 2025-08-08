@@ -1,30 +1,39 @@
-const vehiculoForm = document.getElementById("vehiculoForm");
-const listaVehiculos = document.getElementById("listaVehiculos");
+document.addEventListener("DOMContentLoaded", () => {
+  const vehiculoForm = document.getElementById("vehiculoForm");
+  const listaVehiculos = document.getElementById("listaVehiculos");
 
-vehiculoForm.addEventListener("submit", function(e) {
-  e.preventDefault();
+  vehiculoForm.addEventListener("submit", function(e) {
+    e.preventDefault();
 
-  const placa = document.getElementById("placa").value;
-  const tipo = document.getElementById("tipo").value;
-  const marca = document.getElementById("marca").value;
-  const color = document.getElementById("color").value;
-  const propietario = document.getElementById("propietario").value;
+    const placa = document.getElementById("placa").value;
+    const tipo = document.getElementById("Tipo").value;
+    const marca = document.getElementById("marca").value;
+    const color = document.getElementById("color").value;
+    const propietario = document.getElementById("propietario").value;
 
-  const li = document.createElement("li");
-  li.innerHTML = `
-    ${placa} - ${tipo} - ${marca} - ${color} - ${propietario}
-    <button class="delete-btn">X</button>
-  `;
+    // Crear tarjeta de vehículo
+    const card = document.createElement("div");
+    card.classList.add("vehiculo-card");
 
-  li.querySelector(".delete-btn").addEventListener("click", () => {
-    li.remove();
+    card.innerHTML = `
+      <h3>${tipo === "Carro" ? "🚗" : "🏍️"} ${tipo}</h3>
+      <p><strong>Placa:</strong> ${placa}</p>
+      <p><strong>Marca:</strong> ${marca}</p>
+      <p><strong>Color:</strong> ${color}</p>
+      <p><strong> Propietario:</strong> ${propietario}</p>
+      <button class="delete-btn">❌ Eliminar</button>
+    `;
+
+    // Botón eliminar
+    card.querySelector(".delete-btn").addEventListener("click", () => {
+      card.remove();
+    });
+
+    listaVehiculos.appendChild(card);
+    vehiculoForm.reset();
   });
 
-  listaVehiculos.appendChild(li);
-  vehiculoForm.reset();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
+  // ------- Lógica para cargar marcas según tipo -------
   const tipoVehiculo = document.getElementById("Tipo");
   const marcaSelect = document.getElementById("marca");
 
