@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Vehículos - ParqueoSeguro</title>
+  <link rel="stylesheet" href="../styles/gestionvehiculos.css">
+  <link rel="stylesheet" href="../styles/styles.css" />
+</head>
+
+<body>
+
+  <div class="containerNav">
+    <nav>
+      <a href="../sections/bienvenida.html">Inicio</a> |
+      <a href="../sections/gestionveiculos.html">Gestion Vehiculos</a>
+      <a href="../sections/administraciónespacios.html">Espacios Disponibles</a>
+      <a href="../sections/contacto.html">Contacto</a> |
+      <a href="../Index.html">Cerrar sesión</a>
+    </nav>
+  </div>
+
+  <div class="containerForm">
+    <h1>Gestión de Vehículos</h1>
+    <form id="vehiculoForm">
+      <input type="text" id="placa" placeholder="Placa" required>
+      
+<select name="Tipo" id="Tipo" required>
+  <option value="">Seleccione tipo</option>
+  <option value="Moto">Moto</option>
+  <option value="Carro">Carro</option>
+</select>
+
+<select name="marca" id="marca" required>
+  <option value="">Seleccione una marca</option>
+</select>
+
+      
+      
+      <input type="text" id="color" placeholder="Color" required>
+      <input type="text" id="propietario" placeholder="Propietario" required>
+      <button type="submit">Registrar Vehículo</button>
+    </form>
+
+    <h2>Lista de Vehículos</h2>
+    <ul id="listaVehiculos"></ul>
+  </div>
+
+  <script src="../scripts/gestionvehiculos.js"></script>
+</body>
+
+</html>

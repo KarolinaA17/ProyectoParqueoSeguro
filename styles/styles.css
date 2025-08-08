@@ -3,6 +3,31 @@
   margin-top: 50px;
 }
 
+.containerNav {
+  margin: 20px auto;
+  padding: 20px 10px;
+  width: 90%;
+  height: 90%;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.377);
+}
+
+nav {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 600;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
 
 .container {
   --form-width: 315px;
@@ -216,9 +241,6 @@
   transition: width 0.3s ease;
 }
 
-.footer .link:hover {
-  color: #fff;
-}
 
 .footer .link:hover::after {
   width: 100%;

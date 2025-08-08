@@ -5,40 +5,24 @@ body {
   color: white;
 }
 
-.container {
-  background-color: #1e1e1e;
-  padding: 40px;
-  margin: 60px auto;
-  width: 90%;
-  max-width: 500px;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.containerForm {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 132, 255, 0.4);
 }
+
 
 h1 {
-  font-size: 24px;
   text-align: center;
-  margin-bottom: 20px;
+  color: #0212f1;
 }
 
-nav {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: 600;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
 
 input, textarea {
-  width: 100%;
+  width: 95%;
   padding: 12px;
   margin-top: 10px;
   margin-bottom: 15px;
@@ -54,7 +38,7 @@ textarea {
 }
 
 button {
-  background-color: #00b894;
+  background-color: #110392;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -65,12 +49,12 @@ button {
 }
 
 button:hover {
-  background-color: #019875;
+  background-color:#110392;
 }
 
 .success-message {
   margin-top: 15px;
-  color: #00ff95;
+  color: #2600ff;
   font-weight: bold;
   text-align: center;
 }
