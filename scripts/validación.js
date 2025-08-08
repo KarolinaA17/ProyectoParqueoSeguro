@@ -43,10 +43,9 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
   const nombre = document.getElementById('nombre').value.trim();
   const correo = document.getElementById('correoRegistro').value.trim();
   const clave = document.getElementById('clave').value.trim();
-  const telefono = document.getElementById('telefono').value.trim();
   const mensajeRegistro = document.getElementById('mensajeRegistro');
 
-  if (!nombre || !correo || !clave || !telefono) {
+  if (!nombre || !correo || !clave) {
     mensajeRegistro.textContent = 'Todos los campos son requeridos.';
     mensajeRegistro.style.color = 'orange';
     return;
@@ -55,12 +54,6 @@ document.getElementById('registroForm').addEventListener('submit', function(e) {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|net|org|co|edu)$/;
   if (!emailRegex.test(correo)) {
     mensajeRegistro.textContent = 'Correo electrónico inválido.';
-    mensajeRegistro.style.color = 'orange';
-    return;
-  }
-
-  if (isNaN(telefono)) {
-    mensajeRegistro.textContent = 'El teléfono debe ser numérico.';
     mensajeRegistro.style.color = 'orange';
     return;
   }
@@ -83,10 +76,9 @@ if (contactoForm) {
 
     const nombre = document.getElementById('nombre').value.trim();
     const email = document.getElementById('email').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
     const mensaje = document.getElementById('mensaje').value.trim();
 
-    if (!nombre || !email || !telefono || !mensaje) {
+    if (!nombre || !email || !mensaje) {
       mensajeConfirmacion.textContent = "Por favor completa todos los campos.";
       mensajeConfirmacion.style.color = "orange";
       return;
@@ -95,12 +87,6 @@ if (contactoForm) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|net|org|co|edu)$/;
     if (!emailRegex.test(email)) {
       mensajeConfirmacion.textContent = "Correo electrónico inválido.";
-      mensajeConfirmacion.style.color = "orange";
-      return;
-    }
-
-    if (isNaN(telefono)) {
-      mensajeConfirmacion.textContent = "El teléfono debe ser numérico.";
       mensajeConfirmacion.style.color = "orange";
       return;
     }
