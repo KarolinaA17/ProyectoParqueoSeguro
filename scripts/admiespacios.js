@@ -1,18 +1,11 @@
-if (!localStorage.getItem("espacios")) {
-  const espaciosIniciales = Array.from({ length: 10 }, (_, i) => ({
-    id: i + 1,
-    disponible: true,
-    vehiculo: null
-  }));
-  localStorage.setItem("espacios", JSON.stringify(espaciosIniciales));
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("espaciosContainer");
 
+  renderEspacios();
+
   function renderEspacios() {
+    container.innerHTML = "";
     const espacios = JSON.parse(localStorage.getItem("espacios")) || [];
-    container.innerHTML = ""; // Limpiar antes de renderizar
 
     espacios.forEach(e => {
       const card = document.createElement("div");
@@ -22,21 +15,31 @@ document.addEventListener("DOMContentLoaded", () => {
         card.classList.add("disponible");
         card.innerHTML = `
           <h3>✅ Disponible</h3>
-          <p><strong>Espacio:</strong> #${e.id}</p>
+          <p>Espacio ${e.id}</p>
         `;
       } else {
         card.classList.add("ocupado");
         card.innerHTML = `
           <h3>🚗 Ocupado</h3>
-          <p><strong>Espacio:</strong> #${e.id}</p>
-          <p><strong>Ocupado por:</strong> ${e.vehiculo.propietario}</p>
+          <p><strong>Por:</strong> ${e.vehiculo.propietario}</p>
         `;
+      }
+
+      // Botón para liberar espacio si está ocupado
+      if (!e.disponible) {
+        const liberarBtn = document.createElement("button");
+        liberarBtn.textContent = "Liberar";
+        liberarBtn.classList.add("toggle-btn");
+        liberarBtn.addEventListener("click", () => {
+          e.disponible = true;
+          e.vehiculo = null;
+          localStorage.setItem("espacios", JSON.stringify(espacios));
+          renderEspacios();
+        });
+        card.appendChild(liberarBtn);
       }
 
       container.appendChild(card);
     });
   }
-
-  renderEspacios();
 });
-

@@ -19,21 +19,42 @@ document.addEventListener("DOMContentLoaded", () => {
   vehiculoForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const placa = document.getElementById("placa").value;
+    const placa = document.getElementById("placa").value.trim().toUpperCase();
     const tipo = document.getElementById("Tipo").value;
     const marca = document.getElementById("marca").value;
-    const color = document.getElementById("color").value;
-    const propietario = document.getElementById("propietario").value;
+    const color = document.getElementById("color").value.trim();
+    const propietario = document.getElementById("propietario").value.trim();
     const espacioId = parseInt(espacioSelect.value);
 
+    // 🔹 Validaciones
     if (!espacioId) {
       alert("Por favor selecciona un espacio.");
       return;
     }
 
-    let espacios = JSON.parse(localStorage.getItem("espacios"));
-    let espacioSeleccionado = espacios.find(e => e.id === espacioId);
+    const placaRegex = /^[A-Z]{3}[0-9]{3}$|^[A-Z]{3}[0-9]{2}[A-Z]{1}$/;
+    if (!placaRegex.test(placa)) {
+      alert("Formato de placa inválido. Ejemplo: ABC123 o ABC12D");
+      return;
+    }
 
+    if (placa.length !== 6) {
+      alert("La placa debe tener exactamente 6 caracteres.");
+      return;
+    }
+
+    if (propietario.length < 3 || propietario.length > 30) {
+      alert("El nombre del propietario debe tener entre 3 y 30 caracteres.");
+      return;
+    }
+
+    let espacios = JSON.parse(localStorage.getItem("espacios"));
+    if (espacios.some(e => e.vehiculo && e.vehiculo.placa === placa)) {
+      alert("Ya existe un vehículo con esa placa.");
+      return;
+    }
+
+    let espacioSeleccionado = espacios.find(e => e.id === espacioId);
     if (!espacioSeleccionado || !espacioSeleccionado.disponible) {
       alert("Ese espacio ya está ocupado.");
       return;
@@ -61,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   tipoVehiculo.addEventListener("change", () => {
     const tipoSeleccionado = tipoVehiculo.value;
-    marcaSelect.innerHTML = '<option value=""> Seleccione una marca </option>';
+    marcaSelect.innerHTML = '<option value="">Seleccione una marca</option>';
 
     if (tipoSeleccionado && marcas[tipoSeleccionado]) {
       marcas[tipoSeleccionado].forEach(marca => {
@@ -73,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // ===== Función para cargar espacios disponibles =====
   function cargarEspaciosDisponibles() {
     espacioSelect.innerHTML = '<option value="">Seleccione un espacio</option>';
     const espacios = JSON.parse(localStorage.getItem("espacios"));
@@ -86,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
+  // ===== Renderizar lista de vehículos =====
   function renderVehiculos() {
     listaVehiculos.innerHTML = "";
     const espacios = JSON.parse(localStorage.getItem("espacios"));
