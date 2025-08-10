@@ -11,13 +11,13 @@ body {
   background: #1e1e1e;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 132, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 255, 242, 0.4);
 }
 
 
 h1 {
   text-align: center;
-  color: #0212f1;
+  color: #00e5ff;
 }
 
 
@@ -38,7 +38,7 @@ textarea {
 }
 
 button {
-  background-color: #110392;
+  background-color: #02e6ffc5;
   color: white;
   border: none;
   padding: 12px 20px;
@@ -49,12 +49,12 @@ button {
 }
 
 button:hover {
-  background-color:#110392;
+  background-color:#00e5ff;
 }
 
 .success-message {
   margin-top: 15px;
-  color: #2600ff;
+  color: #00e5ff;
   font-weight: bold;
   text-align: center;
 }

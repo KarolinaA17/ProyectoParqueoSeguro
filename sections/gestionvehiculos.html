@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +7,13 @@
   <link rel="stylesheet" href="../styles/gestionvehiculos.css">
   <link rel="stylesheet" href="../styles/styles.css" />
 </head>
-
 <body>
 
   <div class="containerNav">
     <nav>
       <a href="../sections/bienvenida.html">Inicio</a> |
-      <a href="../sections/gestionveiculos.html">Gestion Vehiculos</a>
-      <a href="../sections/administraciónespacios.html">Espacios Disponibles</a>
+      <a href="../sections/gestionvehiculos.html">Gestión Vehículos</a> |
+      <a href="../sections/administrarespacios.html">Espacios Disponibles</a> |
       <a href="../sections/contacto.html">Contacto</a> |
       <a href="../Index.html">Cerrar sesión</a>
     </nav>
@@ -24,28 +22,41 @@
   <div class="containerForm">
     <h1>Gestión de Vehículos</h1>
     <form id="vehiculoForm">
-      <input type="text" id="placa" placeholder="Placa" required>
-      
-<select name="Tipo" id="Tipo" required>
-  <option value="">Seleccione tipo</option>
-  <option value="Moto">Moto</option>
-  <option value="Carro">Carro</option>
-</select>
 
-<select name="marca" id="marca" required>
-  <option value="">Seleccione una marca</option>
-</select>
-      
+      <!-- Placa -->
+      <input type="text" id="placa" placeholder="Placa" required>
+
+      <!-- Tipo -->
+      <select id="Tipo" required>
+        <option value="">Seleccione tipo</option>
+        <option value="Moto">Moto</option>
+        <option value="Carro">Carro</option>
+      </select>
+
+      <!-- Marca -->
+      <select id="marca" required>
+        <option value="">Seleccione una marca</option>
+      </select>
+
+      <!-- Color -->
       <input type="text" id="color" placeholder="Color" required>
+
+      <!-- Propietario -->
       <input type="text" id="propietario" placeholder="Propietario" required>
+
+      <!-- Espacio -->
+      <select id="espacio" required>
+        <option value="">Seleccione un espacio</option>
+      </select>
+
+      <!-- Botón -->
       <button type="submit">Registrar Vehículo</button>
     </form>
 
     <h2>Lista de Vehículos</h2>
-    <ul id="listaVehiculos"></ul>
+    <div id="listaVehiculos" class="vehiculos-list"></div>
   </div>
 
   <script src="../scripts/gestionvehiculos.js"></script>
 </body>
-
 </html>
